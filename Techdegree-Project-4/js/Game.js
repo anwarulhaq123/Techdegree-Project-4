@@ -58,18 +58,19 @@ getRandomPhrase() {
     logPhrase(game.getRandomPhrase()); Test Code in app.js */
 }
 // Step 7. /* Begins game by selecting a random phrase and displaying it to user  */
-startGame() {
 
-
-
-
-
+  
+  startGame() {
+let hideOverlay = document.querySelector('#overlay');
+hideOverlay.style.display = 'none';
+this.activePhrase = this.getRandomPhrase();
+ this.activePhrase.addPhraseToDisplay();
+// Lets move to app.js and test the code by applying the following test code.// Test code
+//const game = new Game();// Test Code in app.js
+//game.startGame(); // Test code
+ //console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);// Test Code// Getting uncaught erroe in addPhrase ToDisplay. 
+// If we comment the //this.activePhrase.addPhraseToDisplay(); it shows the random phrases on console.
 }
  
-
-
-
-
-
 
 }
