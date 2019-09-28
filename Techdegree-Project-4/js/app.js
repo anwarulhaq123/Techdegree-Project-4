@@ -24,7 +24,11 @@
     logPhrase(game.getRandomPhrase());
     logPhrase(game.getRandomPhrase()); Test Code */
 
-const game = new Game();// Test Code
+/*const game = new Game();// Test Code
 const randomPhrase = game.getRandomPhrase();// Test Code
 const phrase = new Phrase(randomPhrase.phrase);// Test Code
-phrase.addPhraseToDisplay();// Test Code
+phrase.addPhraseToDisplay();// Test Code */
+
+const game = new Game();// Test code for step 7
+game.startGame();
+console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
