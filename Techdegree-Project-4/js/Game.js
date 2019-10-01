@@ -63,14 +63,28 @@ getRandomPhrase() {
   startGame() {
 let hideOverlay = document.querySelector('#overlay');
 hideOverlay.style.display = 'none';
-this.activePhrase = this.getRandomPhrase();
+ this.activePhrase = new Phrase(this.getRandomPhrase().phrase);// Sorted via Slack
  this.activePhrase.addPhraseToDisplay();
 // Lets move to app.js and test the code by applying the following test code.// Test code
 //const game = new Game();// Test Code in app.js
 //game.startGame(); // Test code
- //console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);// Test Code// Getting uncaught erroe in addPhrase ToDisplay. 
-// If we comment the //this.activePhrase.addPhraseToDisplay(); it shows the random phrases on console.
+ //console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);// Test Code//Success. 
+
 }
- 
+   checkForWin() {
+
+    const elements = document.getElementById('phrase');
+    const listOfElements = elements.querySelectorAll('li');
+
+    for (let element of listOfElements) {
+      let newElements = element.className;
+
+      if (newElements !== /hide/, 'show') {
+        return false;
+      }
+      return true;
+    }
+
+  } // Test the code in the console with the following code.//game.checkForWin(); // Success. but Always return 'false'
 
 }
