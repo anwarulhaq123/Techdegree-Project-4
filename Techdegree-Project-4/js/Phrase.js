@@ -37,4 +37,36 @@ phrase.addPhraseToDisplay(); Success */
 // Back to Game.js  complete the Step-7//
 
 }
+ 
+    /*************************** Step 9 . Part 2 **********************************/
+  //user interaction to the game
+  /**
+   * Checks if passed letter is in phrase
+    @ parameter (string) letter - Letter to check
+  */
+  checkLetter(letter) {
+    return this.phrase.includes(letter);
+  } // Test code run in console with the following code
+  //game.activePhrase.checkLetter('a') // Success
+
+  /**
+  * Displays passed letter on screen after a match is found  *
+   @param (string) letter - Letter to display  */
+
+  showMatchedLetter(letter) {
+
+
+    const lettersMatched = document.getElementsByClassName(letter);
+
+    for ( let html of lettersMatched) {
+      html.className = html.className.replace(/hide/, 'show');
+    }
+  }// Test code run in the console
+//  game.activePhrase.showMatchedLetter('a')// Success.
+
+  
+  
+  
+  
+  
 }
