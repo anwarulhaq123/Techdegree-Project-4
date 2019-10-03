@@ -29,6 +29,24 @@ const randomPhrase = game.getRandomPhrase();// Test Code
 const phrase = new Phrase(randomPhrase.phrase);// Test Code
 phrase.addPhraseToDisplay();// Test Code */
 
-const game = new Game();// Test code for step 7
-game.startGame();
-console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+//const game = new Game();// Test code for step 7
+//game.startGame();
+//console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+
+// Step 8. Add the eventListenert to the Start Button id  (btn__rest).
+
+let game ;
+document.getElementById('btn__reset').addEventListener('click', () => {
+  game = new Game ();
+  game.startGame();// Call to startGame() Method on the new game object.
+});// Test the Code // Success.
+
+
+/********************************Step 10 *****************************/
+
+$('.key').on('click',(e) => {
+  game.handleInteraction(e.target);
+});//
+
+
+
