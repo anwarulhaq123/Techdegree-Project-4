@@ -81,7 +81,7 @@ hideOverlay.style.display = 'none';
   /**
   * Checks for winning move  *
    @return {boolean} True if game has been won, false if game wasn't won   */
-  checkForWin() {/ Method to Check if the Player has reveald all the letters.
+  checkForWin() {// Method to Check if the Player has reveald all the letters.
        const classLetter = document.querySelectorAll('.letter').length;
        const classShow =document.querySelectorAll('.show').length;
            if(classLetter === classShow ) {
