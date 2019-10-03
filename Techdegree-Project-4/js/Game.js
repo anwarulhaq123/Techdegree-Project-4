@@ -13,7 +13,7 @@ class Game {
     this.missed = 0; // initiall Value is '0' bcz no guess is made yet or in the start.
     this.phrase = this.createPhrases(); // initailly set as an empty arrray
     // Lets go to app.js to check our code after intilising the Game class.
-    this.activePhrase = 'null'; // This is the phrase object thats's Currently in play.
+    this.activePhrase = ' '; // This is the phrase object thats's Currently in play.
   }
 
   // Step 4. Option # 1
@@ -45,7 +45,8 @@ class Game {
   @return {Object} Phrase object chosen to be used  */
 getRandomPhrase() {
    const randomPhrases= Math.floor(Math.random() * this.phrase.length);
-    return this.phrase[randomPhrases];// Lets got to app.js and test our Code.
+    return this.phrase[randomPhrases];//returns the random Phrases from index.
+  // Lets got to app.js and test our Code.
 // This code will log on the random Quoutes on the console.
 // Success with the following test code in app.js
 /*const logPhrase = (phrase) => {
@@ -61,9 +62,12 @@ getRandomPhrase() {
 
   
   startGame() {
+    // Hide the Start Screen overlay
 let hideOverlay = document.querySelector('#overlay');
 hideOverlay.style.display = 'none';
- this.activePhrase = new Phrase(this.getRandomPhrase().phrase);// Sorted via Slack
+    // Gets the Randome Phrase
+ this.activePhrase = new Phrase(this.getRandomPhrase().phrase);
+    //Add the random phrase to display.
  this.activePhrase.addPhraseToDisplay();
 // Lets move to app.js and test the code by applying the following test code.// Test code
 //const game = new Game();// Test Code in app.js
@@ -77,7 +81,7 @@ hideOverlay.style.display = 'none';
   /**
   * Checks for winning move  *
    @return {boolean} True if game has been won, false if game wasn't won   */
-  checkForWin() {
+  checkForWin() {/ Method to Check if the Player has reveald all the letters.
        const classLetter = document.querySelectorAll('.letter').length;
        const classShow =document.querySelectorAll('.show').length;
            if(classLetter === classShow ) {
@@ -112,7 +116,7 @@ hideOverlay.style.display = 'none';
     }
 
 
-gameOver(gameWon){
+gameOver(gameWon){ //Method to Check if the Player Win or Lost the game.
 let overlay = document.querySelector('#overlay');
 let message = document.querySelector('#game-over-message');
 if (gameWon){
@@ -144,12 +148,14 @@ handleInteraction(button) {
       const buttonClick = $(button).text();
 
      if (this.activePhrase.checkLetter(buttonClick) === true) {
+        //disable the Selected letters on screen.
           $(button).prop('disabled', true).addClass('chosen');
           this.activePhrase.showMatchedLetter(buttonClick);
           if (this.checkForWin() === true) {
               this.gameOver(true);
           }
       } else {
+          // Add the 'wrong'Class and remove the life
           $(button).prop('disabled', true).addClass('wrong');
           this.removeLife();
     }
@@ -158,7 +164,7 @@ handleInteraction(button) {
 
 /*  Step 12  Update your app to reset the gameboard between games*****/
 
-    resetGame() {
+    resetGame() {// Method to reset the game, Make it ready to play again.
       $('#phrase li').remove();
       $('.key').removeClass('chosen');
       $('.key').removeClass('wrong');
