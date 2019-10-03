@@ -77,24 +77,18 @@ hideOverlay.style.display = 'none';
   /**
   * Checks for winning move  *
    @return {boolean} True if game has been won, false if game wasn't won   */
-
-checkForWin() {
-
-   const elements = document.getElementById('#phrase');
-   const listOfElements = elements.querySelectorAll('li');
-
-   for (let element of listOfElements) {
-      let newElements = element.className;
-
-      if (newElements !==  'space') {
-       if (newElements.includes('hide')){
-        return false;
-      }
-      return true;
-    }
-}
-  } // Test the code in the console with the following code.
+  checkForWin() {
+       const classLetter = document.querySelectorAll('.letter').length;
+       const classShow =document.querySelectorAll('.show').length;
+           if(classLetter === classShow ) {
+               return true
+           } else {
+               return false
+           }
+       }// Test the code in the console with the following code.
   //game.checkForWin(); // Success.
+  
+  
   /**
   * Increases the value of the missed property  *
   Removes a life from the scoreboard  *
@@ -127,14 +121,14 @@ overlay.classList.add('win');
 overlay.classList.remove('lose');
 message.textContent=" Congratulations ! You Win ";
 // Test Code// game.gameOver(true)// Success
-
+this.resetGame()
 }else{
   overlay.style.display = 'block';
   overlay.classList.add('lose');
   overlay.classList.remove('win');
 message.textContent=" Sorry ! Better Luck Next Time ";
+ // Test Code // game.removeLife();// Success. 
 this.resetGame();
-// Test Code // game.removeLife();// Success.
 
 
 }
