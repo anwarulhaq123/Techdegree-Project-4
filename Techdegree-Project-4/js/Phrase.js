@@ -55,18 +55,14 @@ phrase.addPhraseToDisplay(); Success */
 
   showMatchedLetter(letter) {
 
-
-    const lettersMatched = document.getElementsByClassName(letter);
-
-    for ( let html of lettersMatched) {
-      html.className = html.className.replace(/hide/, 'show');
-    }
-  }// Test code run in the console
-//  game.activePhrase.showMatchedLetter('a')// Success.
-
-  
-  
-  
-  
+       if (this.checkLetter(letter) === true) {
+           $('.letter').each(function() {
+               if ($(this).text() === letter) {
+                   $(this).addClass('show');
+                   $(this).removeClass('hide');
+               }
+           });
+       }
+     }
   
 }
