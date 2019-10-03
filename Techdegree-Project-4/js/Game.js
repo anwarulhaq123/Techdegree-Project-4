@@ -71,20 +71,106 @@ hideOverlay.style.display = 'none';
  //console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);// Test Code//Success. 
 
 }
-   checkForWin() {
+  /*************************** Step 9 . Part 2 **********************************/
+  //user interaction to the game
 
-    const elements = document.getElementById('phrase');
-    const listOfElements = elements.querySelectorAll('li');
+  /**
+  * Checks for winning move  *
+   @return {boolean} True if game has been won, false if game wasn't won   */
 
-    for (let element of listOfElements) {
+checkForWin() {
+
+   const elements = document.getElementById('#phrase');
+   const listOfElements = elements.querySelectorAll('li');
+
+   for (let element of listOfElements) {
       let newElements = element.className;
 
-      if (newElements !== /hide/, 'show') {
+      if (newElements !==  'space') {
+       if (newElements.includes('hide')){
         return false;
       }
       return true;
     }
+}
+  } // Test the code in the console with the following code.
+  //game.checkForWin(); // Success.
+  /**
+  * Increases the value of the missed property  *
+  Removes a life from the scoreboard  *
+  Checks if player has remaining lives and ends game if player is out  */
 
-  } // Test the code in the console with the following code.//game.checkForWin(); // Success. but Always return 'false'
+  removeLife(){
+        const life = document.querySelectorAll('#scoreboard img');
+
+        for (let heartImg of life){
+            if (heartImg.src.includes("liveHeart.png")){
+                heartImg.src = 'images/lostHeart.png';
+                break;
+            }
+        }
+        this.missed += 1;
+
+        if (this.missed === 5){
+
+            this.gameOver(false);
+        }
+    }
+
+
+gameOver(gameWon){
+let overlay = document.querySelector('#overlay');
+let message = document.querySelector('#game-over-message');
+if (gameWon){
+  overlay.style.display = 'block';
+overlay.classList.add('win');
+overlay.classList.remove('lose');
+message.textContent=" Congratulations ! You Win ";
+// Test Code// game.gameOver(true)// Success
+
+}else{
+  overlay.style.display = 'block';
+  overlay.classList.add('lose');
+  overlay.classList.remove('win');
+message.textContent=" Sorry ! Better Luck Next Time ";
+this.resetGame();
+// Test Code // game.removeLife();// Success.
+
+
+}
+
+}
+
+/********************************Step 10 *****************************/
+
+handleInteraction(button) {
+      if ($(button).attr('disabled')) {
+          return;
+      }  //console.log(button); // Success// Test Code.
+      const buttonClick = $(button).text();
+
+     if (this.activePhrase.checkLetter(buttonClick) === true) {
+          $(button).prop('disabled', true).addClass('chosen');
+          this.activePhrase.showMatchedLetter(buttonClick);
+          if (this.checkForWin() === true) {
+              this.gameOver(true);
+          }
+      } else {
+          $(button).prop('disabled', true).addClass('wrong');
+          this.removeLife();
+    }
+
+  }
+
+/*  Step 12  Update your app to reset the gameboard between games*****/
+
+    resetGame() {
+      $('#phrase li').remove();
+      $('.key').removeClass('chosen');
+      $('.key').removeClass('wrong');
+      $('.key').removeAttr('disabled');
+      $('.tries img').attr('src', 'images/liveHeart.png');
+
+    }
 
 }
