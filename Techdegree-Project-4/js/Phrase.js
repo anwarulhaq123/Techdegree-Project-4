@@ -16,7 +16,7 @@ class Phrase {
 }
       // Step 6 . Create a method addPhraseToDisplay();
       /* Display phrase on game board  */
-      addPhraseToDisplay(){
+      addPhraseToDisplay(){// Display the Phrase to the game board.
         const selectElement = document.querySelector('#phrase ul');
         let letters = '';
         const noOfWords = this.phrase.split('');
@@ -44,7 +44,7 @@ phrase.addPhraseToDisplay(); Success */
    * Checks if passed letter is in phrase
     @ parameter (string) letter - Letter to check
   */
-  checkLetter(letter) {
+  checkLetter(letter) {// Check if the letters selected by player Match to phrase.
     return this.phrase.includes(letter);
   } // Test code run in console with the following code
   //game.activePhrase.checkLetter('a') // Success
@@ -54,7 +54,7 @@ phrase.addPhraseToDisplay(); Success */
    @param (string) letter - Letter to display  */
 
   showMatchedLetter(letter) {
-
+//Reveals the letter(s) on the board that matches the  player's selection
        if (this.checkLetter(letter) === true) {
            $('.letter').each(function() {
                if ($(this).text() === letter) {
