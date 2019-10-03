@@ -36,6 +36,7 @@ phrase.addPhraseToDisplay();// Test Code */
 // Step 8. Add the eventListenert to the Start Button id  (btn__rest).
 
 let game ;
+//eventListener  for 'start button' to start the game.
 document.getElementById('btn__reset').addEventListener('click', () => {
   game = new Game ();
   game.startGame();// Call to startGame() Method on the new game object.
