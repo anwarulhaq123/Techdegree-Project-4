@@ -43,10 +43,11 @@ document.getElementById('btn__reset').addEventListener('click', () => {
 
 
 /********************************Step 10 *****************************/
+// Click  eventListener to each of the onscreen Keboard Buttons//
 
 $('.key').on('click',(e) => {
   game.handleInteraction(e.target);
-});//
+});
 
 
 
